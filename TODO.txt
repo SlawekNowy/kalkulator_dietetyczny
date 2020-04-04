@@ -1,0 +1,6 @@
+No to tak:
+Stworzenie profilu
+Wybór produktu z listy (chyba z bazy danych) 
+Produkty zawierające nazwę, zawartość tłuszczy, białek, węglowodanów, kcal, ilość
+Dodanie posiłku, czyli wybór kilku produktów, ilości, podsumowanie ile zawierają tłuszczy, białek, węglowodanów, kcal
+Wyświetlanie statystyk dziennych
