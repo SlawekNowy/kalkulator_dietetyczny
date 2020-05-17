@@ -16,6 +16,35 @@ public class Posilek {
     private double iloscKCal = 0;
 
 
+    public double getIloscTluszczow() {
+        return iloscTluszczow;
+    }
+
+    public HashMap<Produkt, Integer> getSkladnikiPosilku() {
+        return skladnikiPosilku;
+    }
+
+    public double getIloscTluszczowNasyconych() {
+        return iloscTluszczowNasyconych;
+    }
+
+    public double getIloscBialek() {
+        return iloscBialek;
+    }
+
+    public double getIloscWeglowodanow() {
+        return iloscWeglowodanow;
+    }
+
+    public double getIloscCukrow() {
+        return iloscCukrow;
+    }
+
+    public double getIloscKCal() {
+        return iloscKCal;
+    }
+
+
     public Posilek() {
         this.skladnikiPosilku = new HashMap<>();
     }
@@ -74,7 +103,7 @@ public class Posilek {
     }
 
 
-    public void kalkuluj() {
+    private void kalkuluj() {
         //reset wartosci
         this.iloscBialek = 0;
         this.iloscCukrow = 0;

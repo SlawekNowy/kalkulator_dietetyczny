@@ -1,6 +1,13 @@
 package pl.lublin.wsei.klasy;
 
 
+import java.io.InputStream;
+import java.io.Reader;
+import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.*;
+import java.util.Calendar;
+
 public class Produkt {
     private String nazwa;
     private String marka;
@@ -81,5 +88,9 @@ public class Produkt {
 
     public void setIloscKCal(float iloscKCal) {
         this.iloscKCal = iloscKCal;
+    }
+
+    public PreparedStatement getPreparedStatement() {
+        return null;
     }
 }
