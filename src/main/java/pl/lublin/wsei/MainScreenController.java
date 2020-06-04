@@ -18,7 +18,7 @@ public class MainScreenController {
     }
 
     public void loadLoginScreen() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("pl.lublin.wsei/loginScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("loginScreen.fxml"));
         Pane pane = getPane(loader);
         LoginScreenController loginScreenController = loader.getController();
         loginScreenController.setMainScreenController(this);

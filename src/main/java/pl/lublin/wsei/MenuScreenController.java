@@ -29,7 +29,7 @@ public class MenuScreenController {
 
     @FXML
     void addMealOnAction() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("pl.lublin.wsei/addMealScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("addMealScreen.fxml"));
         Pane pane = getPane(loader);
         AddMealScreenController addMealScreenController = loader.getController();
         addMealScreenController.setMainScreenController(mainScreenController);
@@ -38,7 +38,7 @@ public class MenuScreenController {
 
     @FXML
     void addProductOnAction() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("pl.lublin.wsei/addProductScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("addProductScreen.fxml"));
         Pane pane = getPane(loader);
         AddProductController addProductController = loader.getController();
         addProductController.setMainScreenController(mainScreenController);
@@ -52,7 +52,7 @@ public class MenuScreenController {
 
     @FXML
     void statisticsOnAction() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("pl.lublin.wsei/statisticsScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("statisticsScreen.fxml"));
         Pane pane = getPane(loader);
         StatisticsController statisticsController = loader.getController();
         statisticsController.setMainScreenController(mainScreenController);
