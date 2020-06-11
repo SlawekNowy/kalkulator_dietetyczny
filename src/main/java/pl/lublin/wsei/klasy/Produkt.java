@@ -1,14 +1,7 @@
 package pl.lublin.wsei.klasy;
 
 
-import java.io.InputStream;
-import java.io.Reader;
-import java.math.BigDecimal;
-import java.net.URL;
-import java.sql.*;
-import java.util.Calendar;
-
-public class Produkt {
+public class Produkt extends SQLSerializable {
     private String nazwa;
     private String marka;
 
@@ -90,7 +83,12 @@ public class Produkt {
         this.iloscKCal = iloscKCal;
     }
 
-    public PreparedStatement getPreparedStatement() {
+
+    private void modify(OperationType operationType) {
+    }
+
+
+    public static Produkt getObjectFromDB() {
         return null;
     }
 }

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import pl.lublin.wsei.klasy.Profil;
 
 import java.io.IOException;
 
@@ -45,11 +46,16 @@ public class LoginScreenController {
     }
 
     public void loginButtonOnAction(){
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("menuScreen.fxml"));
-        Pane pane = getPane(loader);
-        MenuScreenController menuScreenController = loader.getController();
-        menuScreenController.setMainScreenController(mainScreenController);
-        mainScreenController.setScreen(pane);
+        boolean loggedIn = false;
+        if(Profil.getObjectFromDB(loginTextArea.getText(),passwordTextArea.getText())!=null)loggedIn=true;
+        if (loggedIn) {
+
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("menuScreen.fxml"));
+            Pane pane = getPane(loader);
+            MenuScreenController menuScreenController = loader.getController();
+            menuScreenController.setMainScreenController(mainScreenController);
+            mainScreenController.setScreen(pane);
+        }
     }
 
     public Pane getPane(FXMLLoader loader) {

@@ -3,7 +3,7 @@ package pl.lublin.wsei.klasy;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Posilek {
+public class Posilek  {
 
     private HashMap<Produkt, Integer> skladnikiPosilku; //Key to Produkt, Value to ilość produktu w posiku.
 
