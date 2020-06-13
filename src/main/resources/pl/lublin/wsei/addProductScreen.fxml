@@ -7,22 +7,23 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lublin.wsei.AddProductController">
     <children>
-        <TextField fx:id="nameProduct" layoutX="244.0" layoutY="23.0" />
+        <TextField fx:id="nameProduct" layoutX="253.0" layoutY="23.0" />
         <Button fx:id="goBackButton" layoutX="274.0" layoutY="331.0" mnemonicParsing="false" onAction="#goBackOnAction" text="Powrót" />
-        <Label layoutX="160.0" layoutY="27.0" text="Podaj nazwę" />
-        <Label fx:id="errorsNameProductLabel" layoutX="244.0" layoutY="48.0" textFill="RED" />
-        <Label layoutX="37.0" layoutY="82.0" text="Podaj zawartość węglowodanów [%]" />
-        <Label layoutX="90.0" layoutY="139.0" text="Podaj zawartość białek [%]" />
-        <Label layoutX="78.0" layoutY="200.0" text="Podaj zawartość tłuszczy [%]" />
-        <Label layoutX="104.0" layoutY="265.0" text="Podaj ilość kcal na 100g" />
-        <TextField fx:id="carbohydratesPerCent" layoutX="244.0" layoutY="78.0" />
-        <TextField fx:id="proteinsPerCent" layoutX="244.0" layoutY="135.0" />
-        <TextField fx:id="fatsPerCent" layoutX="244.0" layoutY="196.0" />
-        <TextField fx:id="kcalInHundredGrams" layoutX="244.0" layoutY="261.0" />
+        <Label layoutX="167.0" layoutY="27.0" text="Podaj nazwę" />
+        <Label layoutX="20.0" layoutY="61.0" text="Podaj zawartość węglowodanów g/100g" />
+        <Label layoutX="70.0" layoutY="131.0" text="Podaj zawartość białek g/100g" />
+        <Label layoutX="65.0" layoutY="164.0" text="Podaj zawartość tłuszczy g/100g" />
+        <Label layoutX="111.0" layoutY="239.0" text="Podaj ilość kcal na 100g" />
+        <TextField fx:id="carbohydrates" layoutX="253.0" layoutY="57.0" />
+        <TextField fx:id="sugars" layoutX="253.0" layoutY="91.0" />
+        <TextField fx:id="fats" layoutX="253.0" layoutY="160.0" />
+        <TextField fx:id="kcalInHundredGrams" layoutX="253.0" layoutY="235.0" />
         <Button fx:id="addProductButton" layoutX="467.0" layoutY="160.0" mnemonicParsing="false" onAction="#addProductOnAction" prefHeight="50.0" prefWidth="52.0" text="Dodaj" />
-        <Label fx:id="errorsCarbohydratesLable" layoutX="244.0" layoutY="103.0" textFill="RED" />
-        <Label fx:id="errorsProteinsLabel" layoutX="244.0" layoutY="160.0" textFill="RED" />
-        <Label fx:id="errorsFatsLabel" layoutX="244.0" layoutY="221.0" textFill="RED" />
         <Label fx:id="errorsKcalLabel" layoutX="244.0" layoutY="286.0" textFill="RED" />
+        <Label fx:id="successLable" layoutX="417.0" layoutY="230.0" textFill="#22c900" />
+        <Label layoutX="66.0" layoutY="95.0" text="Podaj zawartość cukrów g/100g" />
+        <TextField fx:id="proteins" layoutX="253.0" layoutY="127.0" />
+        <TextField fx:id="saturatedFats" layoutX="253.0" layoutY="198.0" />
+        <Label layoutX="2.0" layoutY="202.0" text="Podaj zawartość tłuszczy nasyconych g/100g" />
     </children>
 </Pane>
