@@ -15,6 +15,8 @@
             <artifactId>javafx-controls</artifactId>
             <version>11</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -31,6 +33,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.20</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
