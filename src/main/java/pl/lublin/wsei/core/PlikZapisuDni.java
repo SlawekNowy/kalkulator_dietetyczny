@@ -9,7 +9,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
-import java.util.LinkedList;
+import java.util.TreeSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,46 +17,43 @@ import java.util.stream.Collectors;
 public class PlikZapisuDni{
     //Sprawdzane przez interfejs
     private static final long serialVersionUID = 1L;
-    private static final String sciezkaPliku = "zapisDni.xml";
+    static final String sciezkaPliku = "zapisDni.xml";
     private Profil profil;
-    private LinkedList<Dzien> listaDni;
-    // transient - to NIE będzie serializowane
-    private transient boolean initialized;
+    private TreeSet<Dzien> listaDni;
 
 
     PlikZapisuDni() {
-        listaDni = new LinkedList<>();
+        listaDni = new TreeSet<>();
     }
 
 
-    public LinkedList<Dzien> getListaDni() {
+    public TreeSet<Dzien> getListaDni() {
         return listaDni;
     }
 
-    public void dodajDzien(Dzien dzien) {
-        listaDni.add(dzien);
+    public boolean dodajDzien(Dzien dzien) {
+        return listaDni.add(dzien);
     }
 
-    public void dodajDni(List<Dzien> dni) {
-        listaDni.addAll(dni);
+    public boolean dodajDni(List<Dzien> dni) {
+        return listaDni.addAll(dni);
     }
-    public void dodajDni(Dzien[] dni) {
-        Collections.addAll(listaDni,dni);
+    public boolean dodajDni(Dzien[] dni) {
+        return Collections.addAll(listaDni,dni);
     }
 
 
     public void zapiszPlik () throws IOException {
 
         XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.writeValue(new File("plik_zapisu.xml"),this);
+        xmlMapper.writeValue(new File(sciezkaPliku),this);
 
     }
     public static PlikZapisuDni odczytajPlik() throws FileNotFoundException {
-        File file = new File("plik_zapisu.xml");
+        File file = new File(sciezkaPliku);
         XmlMapper xmlMapper = new XmlMapper();
         String xml = inputStreamToString(new FileInputStream(file));
         try {
-
             return xmlMapper.readValue(xml, PlikZapisuDni.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -76,4 +73,11 @@ public class PlikZapisuDni{
     }
 
 
+    public Profil getProfil() {
+        return profil;
+    }
+
+    public void setProfil(Profil profil) {
+        this.profil = profil;
+    }
 }

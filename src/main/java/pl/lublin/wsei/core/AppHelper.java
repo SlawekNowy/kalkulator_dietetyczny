@@ -1,6 +1,9 @@
 package pl.lublin.wsei.core;
 
+import pl.lublin.wsei.klasy.Profil;
+
 public class AppHelper {
+    public static Profil zalogowanyProfil;
     public static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder();
         for (byte b : hash) {
