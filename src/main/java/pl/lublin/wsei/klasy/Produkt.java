@@ -1,12 +1,20 @@
 package pl.lublin.wsei.klasy;
 
 
+import pl.lublin.wsei.core.AppHelper;
 import pl.lublin.wsei.core.SQLManager;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Produkt extends SQLSerializable {
     private String nazwa;
@@ -182,7 +190,49 @@ public class Produkt extends SQLSerializable {
     }
 
 
-    public static Produkt getObjectFromDB() {
+    public static Set<Produkt> getAllProducts() {
+        String query = "SELECT * FROM wartosci_odzywcze";
+        SQLManager manager = SQLManager.initConnection();
+        try {
+
+            PreparedStatement statement = manager.connection.prepareStatement(query,
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            statement.execute();
+            ResultSet rs = statement.getResultSet();
+            HashSet<Produkt> out = new HashSet<>();
+            while (rs.next()) {
+                //(ID,Nazwa,Bialko,Weglowodany,Cukry,Tluszcze,Tluszcze_nasycone,kalorie)
+                Produkt produkt = new Produkt(rs.getString("Nazwa"),
+                        rs.getFloat("Tluszcze"),
+                        rs.getFloat("Tluszcze_nasycone"),
+                        rs.getFloat("Bialko"),
+                        rs.getFloat("Weglowodany"),
+                        rs.getFloat("Cukry"),
+                        rs.getFloat("kalorie"));
+                out.add(produkt);
+            }
+            manager.shutdownConnection();
+            return out;
+
+            /*
+            Profil profil  = new Profil();
+            profil.setImie(rs.getString("Imie"));
+            profil.setDrugieImie(rs.getString("Drugie_imie"));
+            profil.setNazwisko(rs.getString("Nazwisko"));
+            profil.setDataUrodzenia(rs.getObject("Data_urodzenia", LocalDate.class));
+            profil.ID = rs.getInt("ID");
+            return profil;
+            */
+
+
+        } catch (SQLException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+
+        }
         return null;
     }
 }

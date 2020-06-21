@@ -27,9 +27,11 @@ public class PlikZapisuDni{
     }
 
 
-
-
-    //UNSAFE AF!!!: możliwa bezpośrenia manipulacja zawartością
+    /*
+     * UNSAFE AF!!!: możliwa bezpośrenia manipulacja zawartością
+     *
+     *
+     */
     public TreeSet<Dzien> getListaDni() {
         return listaDni;
     }
