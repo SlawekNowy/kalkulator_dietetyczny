@@ -21,7 +21,22 @@ public class AddMealScreenController {
     private TextField productWeight;
 
     @FXML
+    private Button addProductButton;
+
+    @FXML
+    private Button goBackButton;
+
+    @FXML
+    private Button clearButton;
+
+    @FXML
+    private Label addPruductLable;
+
+    @FXML
     private Label carbohydrates;
+
+    @FXML
+    private Label sugars;
 
     @FXML
     private Label proteins;
@@ -30,18 +45,23 @@ public class AddMealScreenController {
     private Label fats;
 
     @FXML
-    private Button addProductButton;
+    private Label saturatedFats;
 
     @FXML
-    private Button goBackButton;
+    void addProductButtonOnAction() {
 
-    @FXML
-    private Label errorsLabel;
+    }
 
     @FXML
     void addProductOnAction() {
 
     }
+
+    @FXML
+    void clearButtonOnAction() {
+
+    }
+
     @FXML
     void  goBackOnAction(){
         mainScreenController.loadMenuScreen();

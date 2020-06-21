@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import pl.lublin.wsei.core.AppHelper;
-import pl.lublin.wsei.core.SaveDataManager;
 import pl.lublin.wsei.klasy.Profil;
 
 import java.io.IOException;
@@ -49,16 +47,16 @@ public class LoginScreenController {
 
     public void loginButtonOnAction(){
         boolean loggedIn = false;
-        Profil profil;
-        if((profil = Profil.getObjectFromDB(loginTextArea.getText(),passwordTextArea.getText()))!=null)loggedIn=true;
+        if(Profil.getObjectFromDB(loginTextArea.getText(),passwordTextArea.getText())!=null)loggedIn=true;
         if (loggedIn) {
-            AppHelper.zalogowanyProfil = profil;
-            SaveDataManager.inicjalizujPlik();
+
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("menuScreen.fxml"));
             Pane pane = getPane(loader);
             MenuScreenController menuScreenController = loader.getController();
             menuScreenController.setMainScreenController(mainScreenController);
             mainScreenController.setScreen(pane);
+        }else{
+            errorsLable.setText("Nieprawidłowy login/hasło");
         }
     }
 
