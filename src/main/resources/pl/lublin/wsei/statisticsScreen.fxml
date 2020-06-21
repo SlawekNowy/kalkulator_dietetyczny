@@ -15,26 +15,34 @@
         <DatePicker fx:id="toDataPicker" layoutY="252.0" />
         <Label fx:id="errorsDataLabel" layoutX="21.0" layoutY="290.0" textFill="RED" />
         <Button fx:id="countButton" layoutX="61.0" layoutY="331.0" mnemonicParsing="false" onAction="#countButtonOnAction" text="Oblicz" />
-        <Separator layoutX="171.0" orientation="VERTICAL" prefHeight="400.0" />
         <Label layoutX="203.0" layoutY="65.0" text="Węglowoadany" />
-        <Label layoutX="206.0" layoutY="113.0" text="Białka" />
-        <Label layoutX="206.0" layoutY="165.0" text="Tłuszcze" />
+        <Label layoutX="201.0" layoutY="165.0" text="Białka" />
+        <Label layoutX="201.0" layoutY="222.0" text="Tłuszcze" />
         <Label layoutX="346.0" layoutY="23.0" text="W gramach" />
         <Label layoutX="455.0" layoutY="23.0" text="W procentach" />
         <Label fx:id="carbohydratesGrams" layoutX="362.0" layoutY="65.0" />
-        <Label fx:id="proteinsGrams" layoutX="362.0" layoutY="113.0" />
-        <Label fx:id="fatsGrams" layoutX="362.0" layoutY="165.0" />
+        <Label fx:id="proteinsGrams" layoutX="360.0" layoutY="165.0" />
+        <Label fx:id="fatsGrams" layoutX="362.0" layoutY="222.0" />
         <Label fx:id="carbohydratesPerCent" layoutX="478.0" layoutY="65.0" />
-        <Label fx:id="proteinsPerCent" layoutX="478.0" layoutY="113.0" />
-        <Label fx:id="fatsPerCent" layoutX="478.0" layoutY="165.0" />
-        <Separator layoutX="317.0" orientation="VERTICAL" prefHeight="200.0" />
-        <Separator layoutX="434.0" orientation="VERTICAL" prefHeight="200.0" />
+        <Label fx:id="proteinsPerCent" layoutX="479.0" layoutY="165.0" />
+        <Label fx:id="fatsPerCent" layoutX="478.0" layoutY="222.0" />
+        <Separator layoutX="171.0" orientation="VERTICAL" prefHeight="400.0" />
+        <Separator layoutX="317.0" orientation="VERTICAL" prefHeight="300.0" />
+        <Separator layoutX="434.0" orientation="VERTICAL" prefHeight="300.0" />
         <Separator layoutX="174.0" layoutY="51.0" prefWidth="400.0" />
         <Separator layoutX="174.0" layoutY="147.0" prefWidth="400.0" />
         <Separator layoutX="174.0" layoutY="99.0" prefWidth="400.0" />
-        <Button fx:id="goBackButton" layoutX="503.0" layoutY="295.0" mnemonicParsing="false" onAction="#goBackOnAction" text="Powrót" />
+        <Button fx:id="goBackButton" layoutX="478.0" layoutY="337.0" mnemonicParsing="false" onAction="#goBackOnAction" text="Powrót" />
         <Separator layoutY="181.0" prefWidth="172.0" />
         <Label layoutX="71.0" layoutY="192.0" text="Od" />
         <Label layoutX="71.0" layoutY="234.0" text="Do" />
+        <Separator layoutX="174.0" layoutY="199.0" prefWidth="400.0" />
+        <Separator layoutX="174.0" layoutY="251.0" prefHeight="3.0" prefWidth="400.0" />
+        <Label layoutX="203.0" layoutY="113.0" text="Cukry" />
+        <Label fx:id="sugarsGrams" layoutX="360.0" layoutY="113.0" />
+        <Label fx:id="saturatedFatsGrams" layoutX="360.0" layoutY="269.0" />
+        <Label layoutX="203.0" layoutY="269.0" text="Tłuszcze nasycone" />
+        <Label fx:id="sugarsPerCent" layoutX="478.0" layoutY="113.0" />
+        <Label fx:id="saturatedFatsPerCent" layoutX="478.0" layoutY="269.0" />
     </children>
 </Pane>

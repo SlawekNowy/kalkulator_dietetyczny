@@ -55,13 +55,20 @@ public class StatisticsController {
     private Button goBackButton;
 
     @FXML
-    void countButtonOnAction() {
-
-    }
+    private Label sugarsGrams;
 
     @FXML
-    void goBackOnAction() {
-        mainScreenController.loadMenuScreen();
+    private Label saturatedFatsGrams;
+
+    @FXML
+    private Label sugarsPerCent;
+
+    @FXML
+    private Label saturatedFatsPerCent;
+
+    @FXML
+    void countButtonOnAction() {
+
     }
 
     @FXML
@@ -78,5 +85,11 @@ public class StatisticsController {
     void todayOnAction() {
 
     }
+
+    @FXML
+    void goBackOnAction() {
+        mainScreenController.loadMenuScreen();
+    }
+
 
 }
