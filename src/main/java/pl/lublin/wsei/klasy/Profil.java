@@ -108,7 +108,7 @@ public class Profil extends SQLSerializable {
                     outVar.setString(1,imie);
                     outVar.setString(2,drugieImie);
                     outVar.setString(3,nazwisko);
-                    outVar.setObject(4,  dataUrodzenia);
+                    outVar.setObject(4,dataUrodzenia);
                     outVar.setString(5,login);
                     outVar.setString(6,salt);
                     outVar.setString(7,hashHasla);

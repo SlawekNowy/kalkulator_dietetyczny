@@ -6,26 +6,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lublin.wsei.AddMealScreenController">
     <children>
         <ChoiceBox fx:id="productChoiceBox" layoutX="169.0" layoutY="47.0" prefWidth="150.0" />
-        <Label layoutX="61.0" layoutY="51.0" text="Wybierz produkt" />
-        <TextField fx:id="productWeight" layoutX="170.0" layoutY="82.0" />
-        <Label layoutX="31.0" layoutY="86.0" text="Podaj lilość w gramach" />
+        <Label layoutX="39.0" layoutY="51.0" text="Wybierz produkt" />
+        <TextField fx:id="productWeight" layoutX="170.0" layoutY="109.0" />
+        <Label layoutX="23.0" layoutY="113.0" text="Podaj lilość w gramach" />
         <Label layoutX="76.0" layoutY="169.0" text="Węglowodany" />
-        <Label layoutX="118.0" layoutY="219.0" text="Białka" />
-        <Label layoutX="105.0" layoutY="245.0" text="Tłuszcze" />
-        <Button fx:id="addProductButton" layoutX="271.0" layoutY="201.0" mnemonicParsing="false" onAction="#addProductOnAction" prefHeight="36.0" prefWidth="96.0" text="Dodaj posiłek" />
+        <Label layoutX="119.0" layoutY="210.0" text="Białka" />
+        <Label layoutX="105.0" layoutY="248.0" text="Tłuszcze" />
+        <Label fx:id="carbohydrates" layoutX="172.0" layoutY="169.0" />
+        <Label fx:id="proteins" layoutX="172.0" layoutY="210.0" />
+        <Label fx:id="fats" layoutX="172.0" layoutY="248.0" />
+        <Button fx:id="addProductButton" layoutX="267.0" layoutY="193.0" mnemonicParsing="false" onAction="#addProductOnAction" prefHeight="52.0" prefWidth="52.0" text="Dodaj" />
         <Button fx:id="goBackButton" layoutX="174.0" layoutY="322.0" mnemonicParsing="false" onAction="#goBackOnAction" text="Powrót" />
-        <Button fx:id="addProductButton" layoutX="50.0" layoutY="125.0" mnemonicParsing="false" onAction="#addProductButtonOnAction" text="Dodaj" />
-        <Button fx:id="clearButton" layoutX="119.0" layoutY="125.0" mnemonicParsing="false" onAction="#clearButtonOnAction" text="Wyczyść" />
-        <Label fx:id="addPruductLable" layoutX="200.0" layoutY="129.0" textFill="#03bf00" />
-        <Label layoutX="119.0" layoutY="193.0" text="Cukry" />
-        <Label layoutX="57.0" layoutY="276.0" text="Tłuszcze nasycone" />
-        <Label fx:id="carbohydrates" layoutX="174.0" layoutY="169.0" />
-        <Label fx:id="sugars" layoutX="174.0" layoutY="193.0" />
-        <Label fx:id="proteins" layoutX="174.0" layoutY="219.0" />
-        <Label fx:id="fats" layoutX="174.0" layoutY="245.0" />
-        <Label fx:id="saturatedFats" layoutX="174.0" layoutY="276.0" />
+        <Label fx:id="errorsLabel" layoutX="91.0" layoutY="284.0" textFill="RED" />
     </children>
 </Pane>
