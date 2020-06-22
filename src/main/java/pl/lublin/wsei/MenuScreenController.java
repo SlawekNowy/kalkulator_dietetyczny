@@ -54,6 +54,8 @@ public class MenuScreenController {
     void statisticsOnAction() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("statisticsScreen.fxml"));
         Pane pane = getPane(loader);
+
+        //TODO W tym momencie PlikZapisuDni bardzo się przyda.
         StatisticsController statisticsController = loader.getController();
         statisticsController.setMainScreenController(mainScreenController);
         mainScreenController.setScreen(pane);
