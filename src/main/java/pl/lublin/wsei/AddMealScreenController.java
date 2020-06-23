@@ -36,6 +36,13 @@ public class AddMealScreenController {
     private Label fats;
 
     @FXML
+    private Label sugars;
+
+    @FXML
+    private Label saturatedFats;
+
+
+    @FXML
     private Button addProductButton;
 
     @FXML
@@ -58,9 +65,13 @@ public class AddMealScreenController {
         }
         carbohydrates.setText(String.format("%.2f", produkt.getIloscWeglowodanow() * (wagaProduktu / 100)) + " g");
 
+        sugars.setText(String.format("%.2f", produkt.getIloscCukrow() * (wagaProduktu / 100)) + " g");
+
         proteins.setText(String.format("%.2f", produkt.getIloscBialek() * (wagaProduktu / 100)) + " g");
 
         fats.setText(String.format("%.2f", produkt.getIloscTluszczow() * (wagaProduktu / 100) )+ " g");
+
+        saturatedFats.setText(String.format("%.2f", produkt.getIloscTluszczowNasyconych() * (wagaProduktu / 100))+ " g");
     }
 
     @FXML
@@ -98,7 +109,9 @@ public class AddMealScreenController {
         productChoiceBox.getSelectionModel().select(0);
 
         carbohydrates.setText("0 g");
+        sugars.setText(" 0 g");
         fats.setText("0 g");
+        saturatedFats.setText("0 g");
         proteins.setText("0 g");
         productWeight.getStyleClass().clear();
        // productWeight.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100000000, 0, 1)););
@@ -113,9 +126,13 @@ public class AddMealScreenController {
             }
             carbohydrates.setText(String.format("%.2f", produkt.getIloscWeglowodanow() * (newValue / 100)) + " g");
 
+            sugars.setText(String.format("%.2f", produkt.getIloscCukrow() * (newValue / 100)) + " g");
+
             proteins.setText(String.format("%.2f", produkt.getIloscBialek() * (newValue / 100)) + " g");
 
             fats.setText(String.format("%.2f", produkt.getIloscTluszczow() * (newValue / 100) )+ " g");
+
+            saturatedFats.setText(String.format("%.2f", produkt.getIloscTluszczowNasyconych() * (newValue / 100))+ " g");
 
             //updateValues();
 
