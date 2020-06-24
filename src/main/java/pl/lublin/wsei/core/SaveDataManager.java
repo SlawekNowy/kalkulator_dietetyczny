@@ -4,6 +4,7 @@ import pl.lublin.wsei.klasy.Dzien;
 import pl.lublin.wsei.klasy.Posilek;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,9 +28,15 @@ public class SaveDataManager {
         Dzien dzien;
         if (dni.size()==1) {
             dzien = dni.get(0);
+            plikZapisu.getListaDni().remove(dzien);
         } else {
             dzien = new Dzien();
         }
+
         dzien.dodajPosilek(posilek);
+        plikZapisu.getListaDni().add(dzien);
+    }
+    public static void zapiszPlik() throws IOException {
+        plikZapisu.zapiszPlik();
     }
 }

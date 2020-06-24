@@ -7,10 +7,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import pl.lublin.wsei.core.SQLManager;
+import pl.lublin.wsei.core.SaveDataManager;
+import pl.lublin.wsei.klasy.Posilek;
 import pl.lublin.wsei.klasy.Produkt;
 
 
+import java.io.IOException;
 import java.util.Set;
+
 
 
 public class AddMealScreenController {
@@ -49,12 +53,27 @@ public class AddMealScreenController {
     private Button goBackButton;
 
     @FXML
+    private Button finalizeMeal;
+
+    @FXML
     private Label errorsLabel;
+
+    private Posilek meal = new Posilek();;
 
     @FXML
     void addProductOnAction() {
-
+        Produkt produkt = productChoiceBox.getValue();
+        Double wagaProduktu = productWeight.getValue();
+        meal.dodajProdukty(produkt,wagaProduktu);
     }
+
+    @FXML
+    void onFinalizeMeal() throws IOException {
+        SaveDataManager.dodajPosilek(meal);
+        SaveDataManager.zapiszPlik();
+    }
+
+
 
     @FXML
     void updateValues() {
@@ -118,6 +137,8 @@ public class AddMealScreenController {
 
 
         //haha this is called twice
+        //To Past Me: that is beacuse the value was being clamped you idiot
+        //Already fixed this. You're welcome.
         productWeight.valueProperty().addListener((observable, oldValue, newValue) -> {
 
             Produkt produkt = productChoiceBox.getValue();
@@ -137,14 +158,6 @@ public class AddMealScreenController {
             //updateValues();
 
         });
-        //JANK Kod powyżej nie będzie aktywowany jeżeli nie zrobię tego hacka.
-        /*
-        productWeight.focusedProperty().addListener((observable, oldValue, newValue) -> {
-             if (!newValue) {
-                 productWeight.commitValue(); // won't change value, but will commit editor
-        }
-        });
-        */
     }
 }
 

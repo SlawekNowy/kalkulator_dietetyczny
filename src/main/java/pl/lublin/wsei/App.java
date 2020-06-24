@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.lublin.wsei.core.SaveDataManager;
+
+import java.io.IOException;
 
 
 /**
@@ -23,6 +26,13 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        try {
+            if (SaveDataManager.plikZapisu!=null) {
+                SaveDataManager.zapiszPlik();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

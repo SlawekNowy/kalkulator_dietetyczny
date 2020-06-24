@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Posilek  {
 
-    private HashMap<Produkt, Integer> skladnikiPosilku; //Key to Produkt, Value to ilość produktu w posiku.
+    private HashMap<Produkt, Double> skladnikiPosilku; //Key to Produkt, Value to ilość produktu w posiku.
 
     //poniżej są wartośći na bieżąco kalkulowane przez klasę
     private double iloscTluszczow = 0;
@@ -20,7 +20,7 @@ public class Posilek  {
         return iloscTluszczow;
     }
 
-    public HashMap<Produkt, Integer> getSkladnikiPosilku() {
+    public HashMap<Produkt, Double> getSkladnikiPosilku() {
         return skladnikiPosilku;
     }
 
@@ -49,33 +49,49 @@ public class Posilek  {
         this.skladnikiPosilku = new HashMap<>();
     }
 
-    public Posilek(HashMap<Produkt, Integer> skladniki) {
+    public Posilek(HashMap<Produkt, Double> skladniki) {
         this.skladnikiPosilku = skladniki;
         usunPusteProdukty();
         kalkuluj();
     }
 
 
+    public void dodajProdukty(Produkt produkt, double waga) {
+        if (waga <= 0) {
+            System.out.println("Nieprawidłowa wartość");
+            return;
+        }
+        zmienProdukty(produkt, waga);
+
+    }
     public void dodajProdukty(Produkt produkt, int ilosc) {
         if (ilosc <= 0) {
             System.out.println("Nieprawidłowa wartość");
             return;
         }
-        zmienProdukty(produkt, ilosc);
+        zmienProdukty(produkt, ilosc*100);
 
     }
-
     public void usunProdukty(Produkt produkt, int ilosc) {
         if (ilosc >= 0) {
             System.out.println("Nieprawidłowa wartość");
             return;
         }
-        zmienProdukty(produkt, -ilosc);
+        zmienProdukty(produkt, -ilosc*100);
+
+    }
+
+    public void usunProdukty(Produkt produkt, double waga) {
+        if (waga >= 0) {
+            System.out.println("Nieprawidłowa wartość");
+            return;
+        }
+        zmienProdukty(produkt, -waga);
 
     }
 
 
-    private void zmienProdukty(Produkt produkt, int ilosc) {
+    private void zmienProdukty(Produkt produkt, double ilosc) {
         if (skladnikiPosilku.containsKey(produkt)) {
             skladnikiPosilku.replace(produkt, skladnikiPosilku.get(produkt) + ilosc);
         } else {
@@ -90,7 +106,7 @@ public class Posilek  {
 
     private void usunPusteProdukty() {
         //Automatyczny cleanup
-        for (Map.Entry<Produkt, Integer> wpis : skladnikiPosilku.entrySet()) {
+        for (Map.Entry<Produkt, Double> wpis : skladnikiPosilku.entrySet()) {
             Produkt produkt = wpis.getKey();
             usunPustyProdukt(produkt);
         }
@@ -111,9 +127,9 @@ public class Posilek  {
         this.iloscTluszczowNasyconych = 0;
         this.iloscWeglowodanow = 0;
         this.iloscKCal = 0;
-        for (Map.Entry<Produkt, Integer> wpis : skladnikiPosilku.entrySet()) {
+        for (Map.Entry<Produkt, Double> wpis : skladnikiPosilku.entrySet()) {
             Produkt produkt = wpis.getKey();
-            int ilosc = wpis.getValue();
+            double ilosc = wpis.getValue();
             this.iloscBialek += produkt.getIloscBialek() * ilosc;
             this.iloscKCal += produkt.getIloscKCal() * ilosc;
             this.iloscWeglowodanow += produkt.getIloscWeglowodanow() * ilosc;

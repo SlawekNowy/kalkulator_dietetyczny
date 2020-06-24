@@ -8,9 +8,11 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.TreeSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 
@@ -48,7 +50,8 @@ public class PlikZapisuDni{
     }
 
 
-    public void zapiszPlik () throws IOException {
+
+    void zapiszPlik () throws IOException {
 
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.writeValue(new File(sciezkaPliku),this);
