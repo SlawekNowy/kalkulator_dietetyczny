@@ -1,6 +1,7 @@
 package pl.lublin.wsei.klasy;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import pl.lublin.wsei.core.AppHelper;
 import pl.lublin.wsei.core.SQLManager;
 
@@ -16,6 +17,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Produkt extends SQLSerializable {
     private String nazwa;
     private String marka;
@@ -234,5 +236,15 @@ public class Produkt extends SQLSerializable {
 
         }
         return null;
+    }
+
+
+    //nie używać!!!!
+    public int getID() {
+        return ID;
+    }
+    //nie używać!!!!
+    public void  setID(int ID) {
+        this.ID = ID;
     }
 }

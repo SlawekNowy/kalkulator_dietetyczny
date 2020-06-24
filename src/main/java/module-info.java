@@ -6,6 +6,9 @@ module pl.lublin.wsei {
     requires com.fasterxml.jackson.dataformat.xml;
     requires com.fasterxml.jackson.core;
     requires mysql.connector.java;
+    requires com.fasterxml.jackson.datatype.jsr310;
+    requires com.fasterxml.jackson.annotation;
+    requires com.fasterxml.jackson.databind;
 
     opens pl.lublin.wsei to javafx.fxml;
     exports pl.lublin.wsei;

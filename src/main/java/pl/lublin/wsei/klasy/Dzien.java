@@ -1,5 +1,10 @@
 package pl.lublin.wsei.klasy;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -7,6 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Dzien implements Serializable,Comparable<Dzien> {
+    //@JsonDeserialize(using = LocalDateDeserializer.class)
+    //@JsonSerialize(using = LocalDateSerializer.class)
     private final LocalDate timestamp = LocalDate.now();
     private LinkedList<Posilek> posilki;
 

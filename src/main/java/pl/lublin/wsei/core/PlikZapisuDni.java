@@ -1,10 +1,12 @@
 package pl.lublin.wsei.core;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import pl.lublin.wsei.klasy.Dzien;
 import pl.lublin.wsei.klasy.Profil;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 public class PlikZapisuDni{
     //Sprawdzane przez interfejs
     private static final long serialVersionUID = 1L;
-    static final String sciezkaPliku = "zapisDni.xml";
+    static final String sciezkaPliku = "zapisDni.json";
     private Profil profil;
     private final TreeSet<Dzien> listaDni;
 
@@ -53,16 +55,16 @@ public class PlikZapisuDni{
 
     void zapiszPlik () throws IOException {
 
-        XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.writeValue(new File(sciezkaPliku),this);
+        JsonMapper jsonMapper = JsonMapper.builder().addModule(new JavaTimeModule()).build();
+        jsonMapper.writeValue(new File(sciezkaPliku),this);
 
     }
     public static PlikZapisuDni odczytajPlik() throws FileNotFoundException {
         File file = new File(sciezkaPliku);
-        XmlMapper xmlMapper = new XmlMapper();
+        JsonMapper jsonMapper = JsonMapper.builder().addModule(new JavaTimeModule()).build();
         String xml = inputStreamToString(new FileInputStream(file));
         try {
-            return xmlMapper.readValue(xml, PlikZapisuDni.class);
+            return jsonMapper.readValue(xml, PlikZapisuDni.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
 
