@@ -21,7 +21,7 @@ public class PlikZapisuDni{
     private static final long serialVersionUID = 1L;
     static final String sciezkaPliku = "zapisDni.xml";
     private Profil profil;
-    private TreeSet<Dzien> listaDni;
+    private final TreeSet<Dzien> listaDni;
 
 
     PlikZapisuDni() {

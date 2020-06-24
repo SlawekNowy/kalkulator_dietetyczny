@@ -109,5 +109,6 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 .flattened-pom.xml
+zapisDni.xml
 
 # End of https://www.gitignore.io/api/maven

@@ -12,12 +12,13 @@ import java.util.stream.Collectors;
 
 public class SaveDataManager {
     public static PlikZapisuDni plikZapisu;
-    public static void inicjalizujPlik() {
+    public static void inicjalizujPlik() throws IOException {
         try {
             plikZapisu = PlikZapisuDni.odczytajPlik();
         } catch (FileNotFoundException e) {
             plikZapisu = new PlikZapisuDni();
             plikZapisu.setProfil(AppHelper.zalogowanyProfil);
+            plikZapisu.zapiszPlik();
         }
     }
     public static void dodajPosilek(Posilek posilek) {

@@ -53,7 +53,11 @@ public class LoginScreenController {
         if((profil = Profil.getObjectFromDB(loginTextArea.getText(),passwordTextArea.getText()))!=null)loggedIn=true;
         if (loggedIn) {
             AppHelper.zalogowanyProfil = profil;
-            SaveDataManager.inicjalizujPlik();
+            try {
+                SaveDataManager.inicjalizujPlik();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("menuScreen.fxml"));
             Pane pane = getPane(loader);
             MenuScreenController menuScreenController = loader.getController();
