@@ -1,33 +1,46 @@
 package pl.lublin.wsei.core;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
 import pl.lublin.wsei.klasy.Dzien;
+import pl.lublin.wsei.klasy.Posilek;
+import pl.lublin.wsei.klasy.Produkt;
 import pl.lublin.wsei.klasy.Profil;
 
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
 public class PlikZapisuDni{
+
     //Sprawdzane przez interfejs
     private static final long serialVersionUID = 1L;
-    static final String sciezkaPliku = "zapisDni.json";
+    //to nie będzie serializowane
+    private static final transient Kryo kryo = new Kryo();
+    static final String sciezkaPliku = "zapisDni.bin";
     private Profil profil;
     private final TreeSet<Dzien> listaDni;
 
 
     PlikZapisuDni() {
         listaDni = new TreeSet<>();
+        //tylko to będzie serializowanie i NIC WIĘCEJ!!!
+        kryo.register(PlikZapisuDni.class);
+        kryo.register(TreeSet.class);
+        kryo.register(LinkedList.class);
+        kryo.register(HashMap.class);
+        kryo.register(Dzien.class);
+        kryo.register(Posilek.class);
+        kryo.register(Produkt.class);
+        kryo.register(Profil.class);
+        kryo.register(LocalDate.class);
+
     }
 
 
@@ -52,14 +65,30 @@ public class PlikZapisuDni{
     }
 
 
+    /*
+         Output output = new Output(new FileOutputStream("file.bin"));
+          kryo.writeObject(output, object);
+          output.close();
 
+          Input input = new Input(new FileInputStream("file.bin"));
+          SomeClass object2 = kryo.readObject(input, SomeClass.class);
+          input.close();
+         */
     void zapiszPlik () throws IOException {
 
+        /*
         JsonMapper jsonMapper = JsonMapper.builder().addModule(new JavaTimeModule()).build();
         jsonMapper.writeValue(new File(sciezkaPliku),this);
 
+         */
+        Output output = new Output(new FileOutputStream(sciezkaPliku));
+        kryo.writeObject(output, this);
+        output.close();
+
     }
     public static PlikZapisuDni odczytajPlik() throws FileNotFoundException {
+        //return null;
+        /*
         File file = new File(sciezkaPliku);
         JsonMapper jsonMapper = JsonMapper.builder().addModule(new JavaTimeModule()).build();
         String xml = inputStreamToString(new FileInputStream(file));
@@ -70,6 +99,19 @@ public class PlikZapisuDni{
 
             return null;
         }
+        */
+        kryo.register(PlikZapisuDni.class);
+        kryo.register(TreeSet.class);
+        kryo.register(LinkedList.class);
+        kryo.register(HashMap.class);
+        kryo.register(Dzien.class);
+        kryo.register(Posilek.class);
+        kryo.register(Produkt.class);
+        kryo.register(Profil.class);
+        Input input = new Input(new FileInputStream(sciezkaPliku));
+        PlikZapisuDni object2 = kryo.readObject(input, PlikZapisuDni.class);
+        input.close();
+        return object2;
     }
 
     private static String inputStreamToString(FileInputStream fileInputStream) {

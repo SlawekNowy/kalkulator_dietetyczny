@@ -1,9 +1,6 @@
 package pl.lublin.wsei.klasy;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 
 import java.io.Serializable;
 import java.time.LocalDate;

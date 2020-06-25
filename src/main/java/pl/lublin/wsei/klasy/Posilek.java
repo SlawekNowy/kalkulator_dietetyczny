@@ -3,17 +3,8 @@ package pl.lublin.wsei.klasy;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.MapSerializer;
-import com.fasterxml.jackson.databind.ser.std.*;
-import pl.lublin.wsei.core.ProduktDeserializer;
-import pl.lublin.wsei.core.ProduktSerializer;
-
 public class Posilek  {
 
-    @JsonSerialize(keyUsing = ProduktSerializer.class)
-    @JsonDeserialize(keyUsing = ProduktDeserializer.class)
     private final HashMap<Produkt, Double> skladnikiPosilku; //Key to Produkt, Value to ilość produktu w posiku.
 
     //poniżej są wartośći na bieżąco kalkulowane przez klasę

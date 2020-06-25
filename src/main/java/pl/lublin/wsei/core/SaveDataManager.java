@@ -10,9 +10,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//serializacja
+import com.esotericsoftware.kryo.Kryo;
+
 public class SaveDataManager {
     public static PlikZapisuDni plikZapisu;
+
+
+
     public static void inicjalizujPlik() throws IOException {
+
         try {
             plikZapisu = PlikZapisuDni.odczytajPlik();
         } catch (FileNotFoundException e) {
