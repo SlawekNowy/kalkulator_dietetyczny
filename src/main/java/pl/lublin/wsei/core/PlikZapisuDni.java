@@ -30,16 +30,8 @@ public class PlikZapisuDni{
 
     PlikZapisuDni() {
         listaDni = new TreeSet<>();
-        //tylko to będzie serializowanie i NIC WIĘCEJ!!!
-        kryo.register(PlikZapisuDni.class);
-        kryo.register(TreeSet.class);
-        kryo.register(LinkedList.class);
-        kryo.register(HashMap.class);
-        kryo.register(Dzien.class);
-        kryo.register(Posilek.class);
-        kryo.register(Produkt.class);
-        kryo.register(Profil.class);
-        kryo.register(LocalDate.class);
+        registerTypes();
+
 
     }
 
@@ -100,6 +92,18 @@ public class PlikZapisuDni{
             return null;
         }
         */
+
+        //tylko to będzie serializowanie i NIC WIĘCEJ!!!
+
+        registerTypes();
+        Input input = new Input(new FileInputStream(sciezkaPliku));
+        PlikZapisuDni object2 = kryo.readObject(input, PlikZapisuDni.class);
+        input.close();
+        return object2;
+    }
+
+    private static void registerTypes() {
+        //Tylko to będzie serializowane +prymitywy i String i NIC WIĘCEJ!!!
         kryo.register(PlikZapisuDni.class);
         kryo.register(TreeSet.class);
         kryo.register(LinkedList.class);
@@ -108,10 +112,7 @@ public class PlikZapisuDni{
         kryo.register(Posilek.class);
         kryo.register(Produkt.class);
         kryo.register(Profil.class);
-        Input input = new Input(new FileInputStream(sciezkaPliku));
-        PlikZapisuDni object2 = kryo.readObject(input, PlikZapisuDni.class);
-        input.close();
-        return object2;
+        kryo.register(LocalDate.class);
     }
 
     private static String inputStreamToString(FileInputStream fileInputStream) {
